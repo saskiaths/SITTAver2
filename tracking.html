@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Tracking Pengiriman</title>
+
+    <link rel="stylesheet" href="css/main.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <img src="img/logo SITTA.png" class="logo" />
+
+      <a href="dashboard.html"> Dashboard </a>
+
+      <a href="stok.html"> Informasi Bahan Ajar </a>
+
+      <a href="tracking.html"> Tracking Pengiriman </a>
+
+      <div class="menu-dropdown">
+        <a href="#"> Laporan ▼ </a>
+
+        <div class="dropdown">
+          <a href="monitoring.html"> Monitoring Progress DO Bahan Ajar </a>
+
+          <a href="rekapba.html"> Rekap Bahan Ajar </a>
+        </div>
+      </div>
+
+      <a href="transaksi.html"> History Transaksi Bahan Ajar </a>
+
+      <a href="#" onclick="logout()"> Keluar Akun </a>
+    </div>
+
+    <div class="main">
+      <div class="navbar">
+        <h3 id="greeting" class="greeting" style="font-family: monospace"></h3>
+      </div>
+
+      <div class="content2" id="app">
+        <div class="title-wrapper2">
+          <h6 class="title-section2">Daftar <i>Tracking Delivery Order</i></h6>
+
+          <button class="btn-add" @click="showModal = true">
+            + Tambah <i>Delivery Order</i>
+          </button>
+        </div>
+
+        <div v-if="showModal" class="modal-overlay">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Tambah Delivery Order</h3>
+
+              <button class="close-btn" @click="closeModal">✕</button>
+            </div>
+
+            <div class="form-grid">
+              <input :value="nomorDOBaru" readonly />
+
+              <input v-model="newTracking.nim" placeholder="Masukkan NIM" />
+
+              <input v-model="newTracking.nama" placeholder="Masukkan Nama" />
+
+              <select v-model="newTracking.ekspedisi">
+                <option value="">Pilih Ekspedisi</option>
+
+                <option
+                  v-for="item in pengirimanList"
+                  :key="item.kode"
+                  :value="item.nama"
+                >
+                  {{ item.nama }}
+                </option>
+              </select>
+
+              <select v-model="newTracking.paket">
+                <option value="">Pilih Paket Bahan Ajar</option>
+
+                <option
+                  v-for="item in paketList"
+                  :key="item.kode"
+                  :value="item.kode"
+                >
+                  {{ item.kode }} - {{ item.nama }}
+                </option>
+              </select>
+
+              <input type="date" v-model="newTracking.tanggalKirim" />
+
+              <input :value="formatRupiah(totalHarga)" readonly />
+            </div>
+
+            <div
+              v-if="selectedPaket"
+              style="
+                margin-top: 20px;
+                background: #f4f7f4;
+                padding: 15px;
+                border-radius: 12px;
+              "
+            >
+              <strong style="color: #343a40"> Isi Paket Bahan Ajar: </strong>
+
+              <ul style="margin-top: 10px">
+                <li
+                  v-for="(kode,index)
+                  in selectedPaket.isi"
+                  :key="index"
+                >
+                  {{ kode }}
+                </li>
+              </ul>
+            </div>
+
+            <button class="btn-save-data" @click="tambahTracking">
+              Create DO
+            </button>
+          </div>
+        </div>
+
+        <div class="tracking-list">
+          <div class="table-container">
+            <table class="tracking-table">
+              <thead>
+                <tr>
+                  <th>No DO</th>
+                  <th>Nama</th>
+                  <th>NIM</th>
+                  <th>Ekspedisi</th>
+                  <th>Paket</th>
+                  <th>Tanggal Kirim</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr v-for="(item,kode) in tracking" :key="kode">
+                  <td class="do-kode">{{ kode }}</td>
+
+                  <td>{{ item.nama }}</td>
+
+                  <td>{{ item.nim }}</td>
+
+                  <td>{{ item.ekspedisi }}</td>
+
+                  <td>{{ item.paket }}</td>
+
+                  <td>{{ item.tanggalKirim }}</td>
+
+                  <td class="harga">
+                    Rp {{ item.total.toLocaleString("id-ID") }}
+                  </td>
+
+                  <td>
+                    <span
+                      class="badge"
+                      :class="{
+                        aman: item.status === 'Diterima',
+                        warning: item.status === 'Dalam Perjalanan',
+                        danger: item.status === 'Dikirim'
+                      }"
+                    >
+                      {{ item.status }}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/dataBahanAjar.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/tracking-app.js"></script>
+  </body>
+</html>

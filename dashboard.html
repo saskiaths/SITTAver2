@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <img src="img/logo SITTA.png" class="logo" />
+
+      <a href="dashboard.html">Dashboard</a>
+
+      <a href="stok.html"> Informasi Bahan Ajar </a>
+
+      <a href="tracking.html"> Tracking Pengiriman </a>
+
+      <div class="menu-dropdown">
+        <a href="#"> Laporan ▼ </a>
+
+        <div class="dropdown">
+          <a href="monitoring.html"> Monitoring Progress DO Bahan Ajar </a>
+
+          <a href="rekapba.html"> Rekap Bahan Ajar </a>
+        </div>
+      </div>
+
+      <a href="transaksi.html"> History Transaksi Bahan Ajar </a>
+      <a href="#" onclick="logout()">Keluar Akun</a>
+    </div>
+
+    <div class="main">
+      <div class="navbar">
+        <h3 id="greeting" class="greeting" style="font-family: monospace"></h3>
+      </div>
+      <div class="content dashboard-page">
+      <div class="dashboard-header">
+
+        <div class="title-wrapper">
+          <h6 class="title-section">Dashboard SITTA</h6>
+          <span style="font-family: monospace;">
+            - Sistem Informasi Tracking dan
+            Transaksi Bahan Ajar -
+          </span>
+        </div>
+
+        <div class="date-box">
+          <span id="current-date">
+          </span>
+          <strong id="current-time">
+          </strong>
+        </div>
+
+      </div>
+      <div class="dashboard-cards">
+
+        <div class="dashboard-card utama">
+
+          <div class="card-top">
+
+            <div class="icon-circle">
+              📚
+            </div>
+
+            <div>
+              <h3>
+                Data Bahan Ajar
+              </h3>
+
+              <p>
+                Kelola dan pantau seluruh
+                data bahan ajar tersedia
+              </p>
+            </div>
+
+          </div>
+
+          <div class="card-body">
+
+            <div>
+              <h2 id="total-stok">
+                0
+              </h2>
+
+              <span>
+                Total Bahan Ajar
+              </span>
+            </div>
+
+          </div>
+
+          <button class="dashboard-btn" onclick="location.href='stok.html'">
+
+            <strong class="tombol"> Informasi Bahan Ajar  → </strong>
+
+          </button>
+
+        </div>
+
+        <div class="dashboard-card pengiriman">
+
+          <div class="card-top">
+
+            <div class="icon-circle">
+              🚚
+            </div>
+
+            <div>
+              <h3>
+                Pengiriman Bahan Ajar
+              </h3>
+
+              <p>
+                Pantau status dan proses
+                pengiriman bahan ajar
+              </p>
+            </div>
+
+          </div>
+
+          <div class="card-body">
+
+            <div>
+              <h2 id="pengiriman-aktif">
+                0
+              </h2>
+
+              <span>
+                Pengiriman Aktif
+              </span>
+            </div>
+
+          </div>
+
+          <button class="dashboard-btn" onclick="location.href='tracking.html'">
+
+            <strong class="tombol"> Tracking Pengiriman  →</strong>
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="content"></div>
+    </div>
+    <script src="js/dataBahanAjar.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

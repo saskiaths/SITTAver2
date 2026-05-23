@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitoring DO</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <img src="img/logo SITTA.png" class="logo" />
+
+      <a href="dashboard.html">Dashboard</a>
+
+      <a href="stok.html"> Informasi Bahan Ajar </a>
+
+      <a href="tracking.html"> Tracking Pengiriman </a>
+
+      <div class="menu-dropdown">
+        <a href="#"> Laporan ▼ </a>
+
+        <div class="dropdown">
+          <a href="monitoring.html"> Monitoring Progress DO Bahan Ajar </a>
+
+          <a href="rekapba.html"> Rekap Bahan Ajar </a>
+        </div>
+      </div>
+
+      <a href="transaksi.html"> History Transaksi Bahan Ajar </a>
+      <a href="#" onclick="logout()">Keluar Akun</a>
+    </div>
+
+    <div class="main">
+      <div class="navbar">
+        <h3>Monitoring Progress DO Bahan Ajar</h3>
+
+        <h3 id="greeting" class="greeting" style="font-family: monospace"></h3>
+      </div>
+
+      <div class="content"></div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

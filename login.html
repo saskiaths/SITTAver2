@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SITTA</title>
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="js/data.js"></script>
+  </head>
+  <body>
+    <form class="container">
+      <img src="img/logo SITTA.png" class="logo" />
+      <h4>Welcome Back,</h4>
+      <p><i>- Log in now to continue -</i></p>
+      <input type="text" id="email" class="input-box" placeholder="Email" />
+      <br />
+      <input
+        type="password"
+        id="password"
+        class="input-box"
+        placeholder="Password"
+      />
+      <br />
+      <a href="#" onclick="openForgot()" class="links2">Lupa Password?</a><br />
+
+      <button onclick="login()" type="button" class="btn">Masuk</button> <br />
+
+      <a href="#" onclick="openRegister()" class="links">Belum punya akun?</a>
+    </form>
+    <div id="registerModal" class="modal">
+      <div class="modal-register">
+        <span class="close-btn" onclick="closeRegister()"> &times; </span>
+
+        <img src="img/logo SITTA.png" class="logo" />
+
+        <h3 class="judul">SITTA Management System</h3>
+        <br />
+        <p class="judul"><i>- Registrasi -</i></p>
+        <br />
+
+        <button
+          onclick="tampilForm()"
+          id="btndaftar"
+          type="button"
+          class="btn-forgot"
+        >
+          Daftar Sekarang
+        </button>
+
+        <div id="formRegister" style="display: none">
+          <div class="cont">
+            Nama:<br />
+            <input
+              type="text"
+              placeholder="Masukkan Nama Lengkap"
+              id="nama"
+              class="input-box"
+              required
+            /><br />
+
+            Alamat Email:<br />
+            <input
+              type="email"
+              placeholder="Masukkan Email"
+              id="emailRegister"
+              class="input-box"
+              required
+            /><br />
+
+            Username:<br />
+            <input
+              type="text"
+              placeholder="Masukkan Username"
+              id="username"
+              class="input-box"
+              required
+            /><br />
+
+            Password:<br />
+            <input
+              type="password"
+              placeholder="Masukkan Password"
+              id="passwordRegister"
+              class="input-box"
+              required
+            /><br />
+
+            Re-Password:<br />
+            <input
+              type="password"
+              placeholder="Masukkan Password"
+              id="repassword"
+              class="input-box"
+              required
+            /><br />
+
+            <button onclick="register()" class="btn">Daftar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="forgotModal" class="modal">
+      <div class="modal-forgot">
+        <span class="close-btn" onclick="closeForgot()"> &times; </span>
+
+        <img src="img/logo SITTA.png" class="logo" />
+        <h3 class="judul">SITTA Management System</h3>
+        <br />
+
+        <p class="judul"><i>- Reset Password -</i></p>
+        <br />
+
+        <div class="cont2">
+          <p>Masukan email Anda untuk reset password</p>
+
+          Email:<br />
+          <input
+            type="email"
+            id="forgotEmail"
+            placeholder="Masukkan Email"
+            class="input-box2"
+          />
+          <br />
+          <p>
+            Jika Anda lupa email yang terdaftar, silahkan mengirimkan email ke
+            <a
+              href="mailto:support@sitta.id?subject=Lupa%20Email%20SITTA"
+              class="support-link"
+            >
+              support@sitta.id
+            </a>
+          </p>
+
+          <button onclick="resetPassword()" type="button" class="btn-forgot">
+            Kirim Link Reset
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
